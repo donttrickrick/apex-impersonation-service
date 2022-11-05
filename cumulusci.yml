@@ -1,0 +1,22 @@
+minimum_cumulusci_version: '3.67.1'
+project:
+    name: apex-impersonation-service
+    package:
+        name: apex-impersonation-service
+        api_version: '55.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/apex-impersonation-service/tests
+            options:
+                outputdir: robot/apex-impersonation-service/results
+
+    robot_testdoc:
+        options:
+            path: robot/apex-impersonation-service/tests
+            output: robot/apex-impersonation-service/doc/apex-impersonation-service_tests.html
+
