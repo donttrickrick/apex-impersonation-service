@@ -1,0 +1,2 @@
+
+SELECT Id, SF_Impersonater_Certification_Name__c, Name FROM Environment_Variable__c

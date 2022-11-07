@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>https://digi-trade.atlassian.net/browse/CRM-303</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Environment Variable</label>
+    <visibility>Public</visibility>
+</CustomObject>

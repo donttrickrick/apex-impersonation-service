@@ -14,10 +14,10 @@ public with sharing class SalesforceImpersonater implements Impersonateable {
         NamedCredential mqNamedCredential = [
             SELECT JwtIssuer, JwtFormulaSubject, JwtTextSubject, JwtValidityPeriodSeconds, JwtAudience, AuthTokenEndpointUrl, Id, DeveloperName, Endpoint, PrincipalType, AuthProviderId 
             FROM NamedCredential 
-            WHERE DeveloperName = 'Message_Queue' 
+            WHERE DeveloperName = 'Salesforce_Impersonater' 
             LIMIT 1
         ];
-        String certificationName = String.valueOf(Environment_Variable__c.getInstance().MQ_Certification_Name__c);
+        String certificationName = String.valueOf(Environment_Variable__c.getInstance().SF_Impersonater_Certification_Name__c);
 
         Auth.JWT jwt = new Auth.JWT();
         jwt.setSub(this.subject); 

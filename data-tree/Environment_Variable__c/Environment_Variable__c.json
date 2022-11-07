@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Environment_Variable__c",
+                "referenceId": "Environment_Variable__cRef1"
+            },
+            "SF_Impersonater_Certification_Name__c": "MQCert_15April2022",
+            "Name": "impersonator"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 public with sharing class NamedCredentialClient {
     private String endpoint;
     // https://digi-trade.atlassian.net/browse/CRM-312
-    private Mode mode = TransactionConfig.namedCredentialMode;
+    private Mode mode = NamedCredentialClient.Mode.BY_DEFAULT;
     private Impersonateable impersonater;
 
     public NamedCredentialClient(String endpoint) {
@@ -53,7 +53,7 @@ public with sharing class NamedCredentialClient {
             }
 
             System.debug('***namedCredential.AuthProviderId: ' + namedCredential.AuthProviderId);
-            CommonRepo.logLongText('***accessToken', accessToken);
+            CommonService.logLongText('***accessToken', accessToken);
             // system.debug(Pattern.compile('(.{299})').matcher(accessToken).replaceAll('$1\n'));
 
             request.setEndpoint(this.endpoint);

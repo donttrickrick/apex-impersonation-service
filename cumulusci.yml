@@ -20,3 +20,36 @@ tasks:
             path: robot/apex-impersonation-service/tests
             output: robot/apex-impersonation-service/doc/apex-impersonation-service_tests.html
 
+    create_test_user:
+        description: Creates a test user for testing permissions.
+        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
+        options:
+            command: "force:user:create --definitionfile config/user-def.json"
+
+    import_environment_variable:
+        description: Creates a test user for testing permissions.
+        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
+        options:
+            command: "force:data:tree:import -f data-tree/Environment_Variable__c/Environment_Variable__c.json"
+   
+
+flows:
+    ci_unlocked_beta:
+        steps: 
+            1:
+                flow: ci_beta
+            2:
+                task: import_environment_variable
+            3:
+                task: assign_permission_sets
+                options:
+                    api_names: Custom_Permission_Feature_Impersonate_Salesforce
+            4:
+                task: create_test_user
+
+    create_test_user: 
+        steps:
+            1: 
+                task: create_test_user
+            
+

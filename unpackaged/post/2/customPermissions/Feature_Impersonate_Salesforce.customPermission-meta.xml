@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
-    <connectedApp>Message_Queue_Connected_App</connectedApp>
+    <connectedApp>Salesforce_Impersonater_Connected_App</connectedApp>
     <description>https://digi-trade.atlassian.net/browse/CRM-319</description>
     <isLicensed>false</isLicensed>
     <label>Feature: Impersonate Salesforce</label>

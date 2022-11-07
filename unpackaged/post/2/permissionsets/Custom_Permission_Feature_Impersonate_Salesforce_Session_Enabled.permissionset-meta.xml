@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Feature_Impersonate_Salesforce</name>
+    </customPermissions>
+    <description>https://digi-trade.atlassian.net/browse/CRM-319</description>
+    <hasActivationRequired>true</hasActivationRequired>
+    <label>Custom Permission: Feature Impersonate Salesforce - Session Enabled</label>
+</PermissionSet>
