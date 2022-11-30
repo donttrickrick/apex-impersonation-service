@@ -19,4 +19,5 @@
     </oauthPolicy>
     <profileName>System Administrator</profileName>
     <profileName>Minimum Access - Salesforce</profileName>
+    <profileName>Standard User</profileName>
 </ConnectedApp>

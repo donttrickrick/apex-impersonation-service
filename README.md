@@ -1,48 +1,61 @@
-Readme更新中，如遇到问题，欢迎微信联系donttrickrick
 
 
-## SFDX部署步骤
+The project deploys with SFDX and CumulusCI. With any questions, please leave me a message or contact me at 18317028956@163.com or wechat: donttrickrick
 
-SFDX部署涉及到的手动操作较多，待更新
+> CumulusCI is the official Salesforce CI/CD OSS used by SFDO (salesforce.org) projects, eg. Nonprofits cloud and Education cloud.
 
+## Steps: 
 
-## CumulusCI部署步骤
+1. Preparation
 
-1. checkout代码，安装cumulusci，连接你的github账号。guide如下 https://cumulusci.readthedocs.io/en/stable/get-started.html    
-    
-    1.1 请务必连接github，否则执行下面命令行会报错，连接github命令 `cci service connect github mygithub`
-    
-2. 打sfdx包
+- Checkout the source code in your local machine
+
+- Install cumulusci; connect to your github account; the guide is here https://cumulusci.readthedocs.io/en/stable/get-started.html
+
+>  Ensure that your github account is connected to your cumulusci. Otherwize you receive errors.
+
+2. In your CLI, navigate to the project root folder, eg /~/projects/apex-impersonation-service/
+
+3. Release package
 ```bash
 cci flow run release_unlocked_beta --org beta
 ```
-3. 安装包，部署到scratch org中并执行部署后流程
+4. Deploy the source code to the scratch org
 ```bash
 cci flow run ci_unlocked_beta --org beta
 ```
-4. 打开scratch org
+4. Open the scratch org
 ```bash
 cci org browser beta
 ```
-5. 手动配置步骤
+5. Manual configuration
 
-    5.1. 下载certificate
+    - Download certificates
     
-      Setup -> Certificate and Key Management -> **MQCert_15April2022** -> Download Certificat；下载后本地保存好
+        1. Setup -> Certificate and Key Management -> **MQCert_15April2022** -> **Download Certificate** and save it in your local folder
       
-    5.2. 更新connected app
-      
-      1) Setup -> App Manager -> **Salesforce_Impersonater_Connected_App** -> Edit
-      
-      2) 勾选Use digital signatures -> 上传5.1.保存在本地的certificate
-      
-      3) Setup -> App Manager -> **Salesforce_Impersonater_Connected_App** -> View -> Manage Consumer Details -> Copy Consumer Key
-    
-    5.3. 更新named credential
-    
-      1) Setup -> Named Credential -> **Salesforce_Impersonater** -> Paste 5.2.3)的Consumer Key到Issuer
+    - Update connected app
 
-      2) 更新Url和Token Endpoint Url的域名为你的scratch org，注意以my.salesforce.com结尾，如Url为https://data-customization-1973-dev-ed.my.salesforce.com/，Token Endpoint Url为https://data-customization-1973-dev-ed.my.salesforce.com/services/oauth2/token
-      
+        1. Setup -> App Manager -> **Salesforce_Impersonater_Connected_App** -> Edit
 
-测试代码是 scripts/apex/demo-1.apex 和 scripts/apex/demo-2.apex
+        2. Tick **Use digital signatures** -> Upload the certificate **MQCert_15April2022** you saved before
+
+        3. Setup -> App Manager -> **Salesforce_Impersonater_Connected_App** -> View -> Manage Consumer Details -> Copy Consumer Key
+    
+    - Update named credential
+    
+      1) Setup -> Named Credential -> **Salesforce_Impersonater** -> Paste the Consumer Key of **Salesforce_Impersonater_Connected_App** to the **Issuer** field
+
+      2) Update the domain of **Url** and **Token Endpoint Url** to the domain of your scratch org. The domain is end with my.salesforce.com. For example, the correct **Url** should be in this format https://data-customization-1973-dev-ed.my.salesforce.com/; and the correct **Token Endpoint Url** should be in this format https://data-customization-1973-dev-ed.my.salesforce.com/services/oauth2/token
+      
+## Test:
+
+The impersonator for testing is your scratch admin user. 
+
+The imperosnated user for testing is "Apex Impersonation Service Test" user. (I suggest you changing this user's profile to "Minimum Access - Salesforce" profile which minimize the effection of non-related permissions.)
+
+The test classes are in scripts/apex/demo-1.apex and scripts/apex/demo-2.apex. You can use them to play around.
+
+## Demos:
+
+https://medium.com/@rick.xyz.yang/impersonate-users-in-salesforce-ea7010aab7a8

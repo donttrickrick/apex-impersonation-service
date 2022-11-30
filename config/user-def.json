@@ -2,5 +2,9 @@
     "LastName": "Apex Impersonation Service Test",
     "Email": "apex.impersonation.service.test@nomail.com",
     "LanguageLocaleKey": "en_US",
-    "profileName": "Minimum Access - Salesforce"
+    "profileName": "Standard User",
+    "permsets": [
+        "API_Enabled",
+        "Author_Apex"
+    ]
 }
